@@ -18,7 +18,7 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #DC143C 100%);
+            background: linear-gradient(135deg, #C41E3A 0%, #E63946 50%, #F77F00 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -32,6 +32,8 @@
             margin: 0 auto 30px;
             animation: fadeInDown 1s ease-out;
             display: block;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeInDown {
@@ -75,16 +77,16 @@
         }
 
         .flip-card-front {
-            background: white;
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF5E6 100%);
             padding: 30px;
-            border-top: 4px solid #B22222;
+            border-top: 4px solid #E63946;
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
         .flip-card-back {
-            background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+            background: linear-gradient(135deg, #C41E3A 0%, #E63946 50%, #F77F00 100%);
             color: white;
             transform: rotateY(180deg);
             display: flex;
@@ -140,8 +142,8 @@
 
         .cta-button {
             display: inline-block;
-            background: white;
-            color: #8B0000;
+            background: linear-gradient(135deg, #FCBF49 0%, #F77F00 100%);
+            color: white;
             padding: 15px 40px;
             text-decoration: none;
             border-radius: 50px;
@@ -153,9 +155,9 @@
         }
 
         .cta-button:hover {
-            background: #f5f5f5;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #F77F00 0%, #FCBF49 100%);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(247, 127, 0, 0.4);
         }
 
         .section {
@@ -165,12 +167,12 @@
         }
 
         .section-alt {
-            background: #f9f6f1;
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
         }
 
         h2 {
             font-size: 2.5em;
-            color: #8B0000;
+            color: #C41E3A;
             margin-bottom: 30px;
             text-align: center;
             position: relative;
@@ -185,7 +187,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: #B22222;
+            background: linear-gradient(90deg, #E63946 0%, #F77F00 100%);
         }
 
         .services-grid {
@@ -201,37 +203,38 @@
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: box-shadow 0.3s ease;
-            border-top: 4px solid #B22222;
+            border-top: 4px solid #E63946;
         }
 
         .service-card:hover {
-            box-shadow: 0 8px 30px rgba(139,0,0,0.2);
+            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.3);
         }
 
         .service-icon {
             font-size: 3em;
             margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 4px rgba(196, 30, 58, 0.2));
         }
 
         .service-card h3 {
-            color: #8B0000;
+            color: #C41E3A;
             margin-bottom: 15px;
             font-size: 1.5em;
         }
 
         .values {
-            background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
-            color: white;
+            background: #FFF8E7;
+            color: #333;
             padding: 60px 20px;
             text-align: center;
         }
 
         .values h2 {
-            color: white;
+            color: #C41E3A;
         }
 
         .values h2::after {
-            background: white;
+            background: linear-gradient(90deg, #E63946 0%, #F77F00 100%);
         }
 
         .values-list {
@@ -245,15 +248,21 @@
         .value-item {
             text-align: center;
             max-width: 200px;
+            transition: transform 0.3s ease;
+        }
+
+        .value-item:hover {
+            transform: scale(1.1);
         }
 
         .value-item .icon {
             font-size: 3em;
             margin-bottom: 15px;
+            filter: drop-shadow(2px 2px 6px rgba(252, 191, 73, 0.4));
         }
 
         .contact {
-            background: #8B0000;
+            background: linear-gradient(135deg, #C41E3A 0%, #A01728 100%);
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -264,7 +273,7 @@
         }
 
         .contact h2::after {
-            background: white;
+            background: linear-gradient(90deg, #FCBF49 0%, #F77F00 100%);
         }
 
         .contact-info {
@@ -273,15 +282,17 @@
         }
 
         .contact-info a {
-            color: white;
+            color: #FFF;
             text-decoration: none;
-            transition: color 0.3s ease;
-            opacity: 0.9;
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
 
         .contact-info a:hover {
-            opacity: 1;
+            color: #F77F00;
             text-decoration: underline;
+            transform: scale(1.05);
+            display: inline-block;
         }
 
         .contact-item {
@@ -297,7 +308,7 @@
         }
 
         footer {
-            background: #5A0000;
+            background: linear-gradient(135deg, #7D1520 0%, #5A0E15 100%);
             color: white;
             text-align: center;
             padding: 20px;
@@ -326,7 +337,7 @@
 <body>
     <div class="hero">
         <div class="hero-content">
-            <img src="logo.png" alt="BAYHEN'S COOK Logo" class="logo">
+            <img src="img/logo.jpeg" alt="BAYHEN'S COOK Logo" class="logo">
             <h1>BAYHEN'S COOK</h1>
             <p class="tagline">Cuisine Franco-Congolaise & Saveurs d'Ailleurs</p>
             <p style="font-size: 1.2em; margin: 20px 0;">Produits de qualité, frais et fait maison</p>
@@ -438,7 +449,7 @@
         </div>
     </div>
 
-    <div class="section section-alt">
+    <div class="section">
         <h2>Pourquoi Choisir BAYHEN'S COOK ?</h2>
         <div style="max-width: 800px; margin: 40px auto; text-align: center; font-size: 1.1em;">
             <p style="margin-bottom: 20px;">
@@ -467,7 +478,7 @@
             </div>
         </div>
         <p style="margin-top: 40px; font-size: 1.3em; font-style: italic;">
-            "Avec BAYHEN'S COOK, la satisfaction du client est ma priorité"
+            "Chez BAYHEN'S COOK, la satisfaction du client est notre priorité"
         </p>
     </div>
 

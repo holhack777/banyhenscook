@@ -18,12 +18,86 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #c8a882 100%);
+            background: linear-gradient(135deg, #8B0000 0%, #B22222 50%, #DC143C 100%);
             color: white;
             padding: 80px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
+        }
+
+        .logo {
+            max-width: 250px;
+            height: auto;
+            margin: 0 auto 30px;
+            animation: fadeInDown 1s ease-out;
+            display: block;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+            height: 400px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .flip-card-front {
+            background: white;
+            padding: 30px;
+            border-top: 4px solid #B22222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .flip-card-back {
+            background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .dish-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 15px;
         }
 
         .hero::before {
@@ -66,8 +140,8 @@
 
         .cta-button {
             display: inline-block;
-            background: #c8a882;
-            color: #1a472a;
+            background: white;
+            color: #8B0000;
             padding: 15px 40px;
             text-decoration: none;
             border-radius: 50px;
@@ -79,7 +153,7 @@
         }
 
         .cta-button:hover {
-            background: #d4b896;
+            background: #f5f5f5;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
@@ -96,7 +170,7 @@
 
         h2 {
             font-size: 2.5em;
-            color: #1a472a;
+            color: #8B0000;
             margin-bottom: 30px;
             text-align: center;
             position: relative;
@@ -111,7 +185,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 3px;
-            background: #c8a882;
+            background: #B22222;
         }
 
         .services-grid {
@@ -126,13 +200,12 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid #c8a882;
+            transition: box-shadow 0.3s ease;
+            border-top: 4px solid #B22222;
         }
 
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 30px rgba(139,0,0,0.2);
         }
 
         .service-icon {
@@ -141,13 +214,13 @@
         }
 
         .service-card h3 {
-            color: #1a472a;
+            color: #8B0000;
             margin-bottom: 15px;
             font-size: 1.5em;
         }
 
         .values {
-            background: linear-gradient(135deg, #2d5a3d 0%, #1a472a 100%);
+            background: linear-gradient(135deg, #8B0000 0%, #B22222 100%);
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -158,7 +231,7 @@
         }
 
         .values h2::after {
-            background: #c8a882;
+            background: white;
         }
 
         .values-list {
@@ -180,7 +253,7 @@
         }
 
         .contact {
-            background: #1a472a;
+            background: #8B0000;
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -191,7 +264,7 @@
         }
 
         .contact h2::after {
-            background: #c8a882;
+            background: white;
         }
 
         .contact-info {
@@ -200,13 +273,15 @@
         }
 
         .contact-info a {
-            color: #c8a882;
+            color: white;
             text-decoration: none;
             transition: color 0.3s ease;
+            opacity: 0.9;
         }
 
         .contact-info a:hover {
-            color: #d4b896;
+            opacity: 1;
+            text-decoration: underline;
         }
 
         .contact-item {
@@ -222,7 +297,7 @@
         }
 
         footer {
-            background: #0d2416;
+            background: #5A0000;
             color: white;
             text-align: center;
             padding: 20px;
@@ -251,6 +326,7 @@
 <body>
     <div class="hero">
         <div class="hero-content">
+            <img src="logo.png" alt="BAYHEN'S COOK Logo" class="logo">
             <h1>BAYHEN'S COOK</h1>
             <p class="tagline">Cuisine Franco-Congolaise & Saveurs d'Ailleurs</p>
             <p style="font-size: 1.2em; margin: 20px 0;">Produits de qualité, frais et fait maison</p>
@@ -261,35 +337,82 @@
     <div class="section">
         <h2>Nos Services</h2>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">🍽️</div>
-                <h3>Pièces Cocktails</h3>
-                <p>Des créations raffinées pour ravir vos papilles et impressionner vos invités lors de vos événements.</p>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">🍽️</div>
+                        <h3>Pièces Cocktails</h3>
+                        <p>Des créations raffinées pour ravir vos papilles et impressionner vos invités lors de vos événements.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="cocktails.jpg" alt="Pièces Cocktails" class="dish-image">
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🥘</div>
-                <h3>Plats Franco-Congolais</h3>
-                <p>Découvrez une fusion authentique entre la gastronomie française et les saveurs congolaises traditionnelles.</p>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">🥘</div>
+                        <h3>Plats Franco-Congolais</h3>
+                        <p>Découvrez une fusion authentique entre la gastronomie française et les saveurs congolaises traditionnelles.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="plat-franco-congolais.jpg" alt="Plats Franco-Congolais" class="dish-image">
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🍰</div>
-                <h3>Desserts Maison</h3>
-                <p>Des desserts gourmands préparés avec soin pour terminer vos repas en beauté.</p>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">🍰</div>
+                        <h3>Desserts Maison</h3>
+                        <p>Des desserts gourmands préparés avec soin pour terminer vos repas en beauté.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="desserts.jpg" alt="Desserts Maison" class="dish-image">
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🎪</div>
-                <h3>Animations Culinaires</h3>
-                <p>Jambon, saumon, magret... Des animations pour vos événements qui feront sensation.</p>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">🎪</div>
+                        <h3>Animations Culinaires</h3>
+                        <p>Jambon, saumon, magret... Des animations pour vos événements qui feront sensation.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="animations.jpg" alt="Animations Culinaires" class="dish-image">
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">📦</div>
-                <h3>Plats à Emporter</h3>
-                <p>Commandez vos plats préférés à déguster en famille, entre amis ou au bureau.</p>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">📦</div>
+                        <h3>Plats à Emporter</h3>
+                        <p>Commandez vos plats préférés à déguster en famille, entre amis ou au bureau.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="plats-emporter.jpg" alt="Plats à Emporter" class="dish-image">
+                    </div>
+                </div>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🌍</div>
-                <h3>Saveurs d'Ailleurs</h3>
-                <p>Un voyage culinaire à travers différentes cultures et traditions gastronomiques.</p>
+            
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <div class="service-icon">🌍</div>
+                        <h3>Saveurs d'Ailleurs</h3>
+                        <p>Un voyage culinaire à travers différentes cultures et traditions gastronomiques.</p>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="saveurs-ailleurs.jpg" alt="Saveurs d'Ailleurs" class="dish-image">
+                    </div>
+                </div>
             </div>
         </div>
     </div>

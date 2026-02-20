@@ -21,22 +21,6 @@ cards.forEach(function (card) {
   });
 });
 
-// // Optionnel : clic sur la carte elle-même
-// cards.forEach(function (card) {
-//   card.addEventListener('click', function (e) {
-//     // ignorer le clic si c'est déjà géré par le bouton
-//     if (e.target.closest('.discover-btn')) return;
-
-//     cards.forEach(function (otherCard) {
-//       if (otherCard !== card) {
-//         otherCard.classList.remove('is-flipped');
-//       }
-//     });
-
-//     card.classList.toggle('is-flipped');
-//   });
-// });
-
 
 // Slider dans chaque carte
 document.querySelectorAll('.card-slider').forEach(function (slider) {

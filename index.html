@@ -1,490 +1,266 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAYHEN'S COOK - Traiteur Franco-Congolais à Nemours</title>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #C41E3A 0%, #E63946 50%, #F77F00 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo {
-            max-width: 250px;
-            height: auto;
-            margin: 0 auto 30px;
-            animation: fadeInDown 1s ease-out;
-            display: block;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .flip-card {
-            background-color: transparent;
-            perspective: 1000px;
-            height: 400px;
-        }
-
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-        }
-
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .flip-card-front {
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFF5E6 100%);
-            padding: 30px;
-            border-top: 4px solid #E63946;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .flip-card-back {
-            background: linear-gradient(135deg, #C41E3A 0%, #E63946 50%, #F77F00 100%);
-            color: white;
-            transform: rotateY(180deg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .dish-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 15s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.3; }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .tagline {
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            font-style: italic;
-            color: #f0e6d2;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(135deg, #FCBF49 0%, #F77F00 100%);
-            color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            background: linear-gradient(135deg, #F77F00 0%, #FCBF49 100%);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(247, 127, 0, 0.4);
-        }
-
-        .section {
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-alt {
-            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8CC 100%);
-        }
-
-        h2 {
-            font-size: 2.5em;
-            color: #C41E3A;
-            margin-bottom: 30px;
-            text-align: center;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, #E63946 0%, #F77F00 100%);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: box-shadow 0.3s ease;
-            border-top: 4px solid #E63946;
-        }
-
-        .service-card:hover {
-            box-shadow: 0 8px 30px rgba(230, 57, 70, 0.3);
-        }
-
-        .service-icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            filter: drop-shadow(2px 2px 4px rgba(196, 30, 58, 0.2));
-        }
-
-        .service-card h3 {
-            color: #C41E3A;
-            margin-bottom: 15px;
-            font-size: 1.5em;
-        }
-
-        .values {
-            background: #FFF8E7;
-            color: #333;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .values h2 {
-            color: #C41E3A;
-        }
-
-        .values h2::after {
-            background: linear-gradient(90deg, #E63946 0%, #F77F00 100%);
-        }
-
-        .values-list {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
-        .value-item {
-            text-align: center;
-            max-width: 200px;
-            transition: transform 0.3s ease;
-        }
-
-        .value-item:hover {
-            transform: scale(1.1);
-        }
-
-        .value-item .icon {
-            font-size: 3em;
-            margin-bottom: 15px;
-            filter: drop-shadow(2px 2px 6px rgba(252, 191, 73, 0.4));
-        }
-
-        .contact {
-            background: linear-gradient(135deg, #C41E3A 0%, #A01728 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .contact h2 {
-            color: white;
-        }
-
-        .contact h2::after {
-            background: linear-gradient(90deg, #FCBF49 0%, #F77F00 100%);
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            font-size: 1.2em;
-        }
-
-        .contact-info a {
-            color: #FFF;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .contact-info a:hover {
-            color: #F77F00;
-            text-decoration: underline;
-            transform: scale(1.05);
-            display: inline-block;
-        }
-
-        .contact-item {
-            margin: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .contact-item .icon {
-            font-size: 1.5em;
-        }
-
-        footer {
-            background: linear-gradient(135deg, #7D1520 0%, #5A0E15 100%);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-
-            .tagline {
-                font-size: 1.1em;
-            }
-
-            h2 {
-                font-size: 2em;
-            }
-
-            .values-list {
-                gap: 30px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traiteur Franco-Congolais à Nemours - BAYHEN'S COOK</title>
+  <meta name="description" content="BAYHEN'S COOK, traiteur franco-congolais à Nemours (Seine-et-Marne) : pièces cocktails, buffets, plats à emporter et événements privés ou professionnels. Produits frais, fait maison.">
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-content">
-            <img src="img/logo.jpeg" alt="bayhen's cook Logo" class="logo">
-            <h1>BAYHEN'S COOK</h1>
-            <p class="tagline">Cuisine Franco-Congolaise & Saveurs d'Ailleurs</p>
-            <p style="font-size: 1.2em; margin: 20px 0;">Produits de qualité, frais et fait maison</p>
-            <a href="tel:0663418863" class="cta-button">📞 Appelez-nous</a>
-        </div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <img src="img/logo.jpeg" alt="Logo du traiteur BAYHEN'S COOK" class="logo">
+      <h1>BAYHEN'S COOK</h1>
+      <p class="tagline">Cuisine franco-congolaise & saveurs d'ailleurs</p>
+      <p class="hero-subtitle">Produits de qualité, frais et fait maison</p>
+      <a href="tel:0663418863" class="cta-button" aria-label="Appeler BAYHEN'S COOK au 06 63 41 88 63">📞 Appelez-nous</a>
     </div>
+  </header>
 
-    <div class="section">
-        <h2>Nos Services</h2>
-        <div class="services-grid">
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="service-icon">🍽️</div>
-                        <h3>Pièces Cocktails</h3>
-                        <p>Des créations raffinées pour ravir vos papilles et impressionner vos invités lors de vos événements.</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="img/presentation_center.jpeg" alt="Pièces Cocktails" class="dish-image">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="service-icon">🥘</div>
-                        <h3>Plats Franco-Congolais</h3>
-                        <p>Découvrez une fusion authentique entre la gastronomie française et les saveurs congolaises traditionnelles.</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="img/dressage.jpeg" alt="Plats Franco-Congolais" class="dish-image">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="service-icon">🍰</div>
-                        <h3>Desserts Maison</h3>
-                        <p>Des desserts gourmands préparés avec soin pour terminer vos repas en beauté.</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="img/dessert.jpeg" alt="Desserts Maison" class="dish-image">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="service-icon">🎪</div>
-                        <h3>Animations Culinaires</h3>
-                        <p>Jambon, saumon, magret... Des animations pour vos événements qui feront sensation.</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="img/sandwich.jpeg" alt="Animations Culinaires" class="dish-image">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="service-icon">📦</div>
-                        <h3>Plats à Emporter</h3>
-                        <p>Commandez vos plats préférés à déguster en famille, entre amis ou au bureau.</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="img/poke.jpeg" alt="Plats à Emporter" class="dish-image">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="flip-card">
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                        <div class="service-icon">🌍</div>
-                        <h3>Saveurs d'Ailleurs</h3>
-                        <p>Un voyage culinaire à travers différentes cultures et traditions gastronomiques.</p>
-                    </div>
-                    <div class="flip-card-back">
-                        <img src="img/dressage2.jpeg" alt="Saveurs d'Ailleurs" class="dish-image">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <main>
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <h2>Nos Services</h2>
+      <div class="services-grid">
 
-    <div class="values">
-        <h2>Nos Valeurs</h2>
-        <div class="values-list">
-            <div class="value-item">
-                <div class="icon">✨</div>
-                <h3>Qualité</h3>
-                <p>Des produits frais et de première qualité pour chaque préparation</p>
+        <!-- 1. PIÈCES COCKTAILS -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="service-icon">🍽️</div>
+              <h3>Pièces cocktails</h3>
+              <p>Créations raffinées pour vos cocktails dînatoires, mariages, anniversaires et événements d'entreprise à Nemours et en Île-de-France.</p>
+              <button class="discover-btn" type="button">Découvrir</button>
             </div>
-            <div class="value-item">
-                <div class="icon">🏠</div>
-                <h3>Fait Maison</h3>
-                <p>Tout est préparé avec amour et savoir-faire traditionnel</p>
+            <div class="flip-card-back">
+              <div class="card-slider">
+                <div class="slider-track">
+                  <img src="img/presentation_center.jpeg" alt="Pièces cocktails BAYHEN'S COOK - photo 1">
+                  <!-- <img src="img/presentation_center2.jpeg" alt="Pièces cocktails BAYHEN'S COOK - photo 2">
+                  <img src="img/presentation_center3.jpeg" alt="Pièces cocktails BAYHEN'S COOK - photo 3"> -->
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Image précédente">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Image suivante">›</button>
+              </div>
             </div>
-            <div class="value-item">
-                <div class="icon">😊</div>
-                <h3>Satisfaction</h3>
-                <p>Votre satisfaction est notre priorité absolue</p>
-            </div>
+          </div>
         </div>
-    </div>
 
-    <div class="section">
-        <h2>Pourquoi Choisir BAYHEN'S COOK ?</h2>
-        <div style="max-width: 800px; margin: 40px auto; text-align: center; font-size: 1.1em;">
-            <p style="margin-bottom: 20px;">
-                Chez BAYHEN'S COOK, nous mettons notre passion et notre expertise au service de vos événements et de vos papilles. Que ce soit pour un cocktail professionnel, une réunion de famille ou simplement un repas entre amis, nous apportons une touche d'authenticité et de qualité à chaque occasion.
-            </p>
-            <p>
-                Notre cuisine franco-congolaise unique vous fait voyager entre deux continents, avec des recettes traditionnelles revisitées et des saveurs qui éveillent les sens.
-            </p>
+        <!-- 2. PLATS FRANCO-CONGOLAIS -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="service-icon">🥘</div>
+              <h3>Plats franco-congolais</h3>
+              <p>Fusion entre gastronomie française et saveurs congolaises traditionnelles, pour vos événements familiaux ou professionnels.</p>
+              <button class="discover-btn" type="button">Découvrir</button>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-slider">
+                <div class="slider-track">
+                  <img src="img/dressage.jpeg" alt="Plat franco-congolais BAYHEN'S COOK - photo 1">
+                  <img src="img/dressage2.jpeg" alt="Plat franco-congolais BAYHEN'S COOK - photo 2">
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Image précédente">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Image suivante">›</button>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
 
-    <div class="contact">
-        <h2>Contactez-Nous</h2>
-        <div class="contact-info">
-            <div class="contact-item">
-                <span class="icon">📍</span>
-                <span>Nemours, Seine-et-Marne</span>
+        <!-- 3. DESSERTS MAISON -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="service-icon">🍰</div>
+              <h3>Desserts maison</h3>
+              <p>Desserts gourmands préparés avec soin pour terminer vos repas en beauté, en buffet ou à l'assiette.</p>
+              <button class="discover-btn" type="button">Découvrir</button>
             </div>
-            <div class="contact-item">
-                <span class="icon">📞</span>
-                <a href="tel:0663418863">06 63 41 88 63</a>
+            <div class="flip-card-back">
+              <div class="card-slider">
+                <div class="slider-track">
+                  <img src="img/dessert.jpeg" alt="Dessert maison BAYHEN'S COOK - photo 1">
+                  <!-- <img src="img/dessert2.jpeg" alt="Dessert maison BAYHEN'S COOK - photo 2"> -->
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Image précédente">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Image suivante">›</button>
+              </div>
             </div>
-            <div class="contact-item">
-                <span class="icon">✉️</span>
-                <a href="mailto:kleve@bayhenscook.fr">kleve@bayhenscook.fr</a>
-            </div>
+          </div>
         </div>
-        <p style="margin-top: 40px; font-size: 1.3em; font-style: italic;">
-            "Chez BAYHEN'S COOK, la satisfaction du client est notre priorité"
+
+        <!-- 4. ANIMATIONS CULINAIRES -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="service-icon">🎪</div>
+              <h3>Animations culinaires</h3>
+              <p>Jambon, saumon, magret et autres animations chaudes ou froides pour donner du spectacle à vos événements.</p>
+              <button class="discover-btn" type="button">Découvrir</button>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-slider">
+                <div class="slider-track">
+                  <img src="img/sandwich.jpeg" alt="Animation culinaire BAYHEN'S COOK - photo 1">
+                  <!-- <img src="img/sandwich2.jpeg" alt="Animation culinaire BAYHEN'S COOK - photo 2"> -->
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Image précédente">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Image suivante">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. PLATS À EMPORTER -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="service-icon">📦</div>
+              <h3>Plats à emporter</h3>
+              <p>Commandez vos plats préférés à emporter pour la famille, les amis ou le bureau à Nemours et alentours.</p>
+              <button class="discover-btn" type="button">Découvrir</button>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-slider">
+                <div class="slider-track">
+                  <img src="img/poke.jpeg" alt="Plat à emporter BAYHEN'S COOK - photo 1">
+                  <!-- <img src="img/poke2.jpeg" alt="Plat à emporter BAYHEN'S COOK - photo 2"> -->
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Image précédente">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Image suivante">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. SAVEURS D'AILLEURS -->
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <div class="service-icon">🌍</div>
+              <h3>Saveurs d'ailleurs</h3>
+              <p>Un voyage culinaire inspiré de différentes cultures et traditions gastronomiques, sur mesure pour votre événement.</p>
+              <button class="discover-btn" type="button">Découvrir</button>
+            </div>
+            <div class="flip-card-back">
+              <div class="card-slider">
+                <div class="slider-track">
+                  <img src="img/dressage2.jpeg" alt="Assiette aux saveurs du monde BAYHEN'S COOK - photo 1">
+                  <!-- <img src="img/dressage3.jpeg" alt="Assiette aux saveurs du monde BAYHEN'S COOK - photo 2"> -->
+                </div>
+                <button class="slider-btn prev" type="button" aria-label="Image précédente">‹</button>
+                <button class="slider-btn next" type="button" aria-label="Image suivante">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section class="section section-alt" id="about">
+      <h2>À Propos</h2>
+      <div class="section-text">
+        <p>
+          BAYHEN'S COOK est un traiteur basé à Nemours, en Seine-et-Marne, spécialisé dans la cuisine franco-congolaise et les saveurs du monde.
         </p>
-    </div>
+        <p>
+          Nous vous accompagnons pour vos événements privés et professionnels en Seine-et-Marne et en Île-de-France : mariages, baptêmes, anniversaires, cocktails d'entreprise, repas associatifs et plus encore.
+        </p>
+        <p>
+          Chaque prestation est réalisée sur mesure, en fonction de vos envies, de votre budget et de vos besoins spécifiques (végétarien, sans porc, etc.).
+        </p>
+      </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2024 BAYHEN'S COOK - Tous droits réservés | Traiteur à Nemours</p>
-    </footer>
+    <!-- VALEURS -->
+    <section class="values" id="values">
+      <h2>Nos Valeurs</h2>
+      <div class="values-list">
+        <div class="value-item">
+          <div class="icon">✨</div>
+          <h3>Qualité</h3>
+          <p>Des produits frais et de première qualité pour chaque préparation.</p>
+        </div>
+        <div class="value-item">
+          <div class="icon">🏠</div>
+          <h3>Fait maison</h3>
+          <p>Une cuisine faite maison, préparée avec passion et savoir-faire.</p>
+        </div>
+        <div class="value-item">
+          <div class="icon">😊</div>
+          <h3>Satisfaction</h3>
+          <p>Votre satisfaction et celle de vos invités est au cœur de notre démarche.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- POURQUOI NOUS -->
+    <section class="section" id="why">
+      <h2>Pourquoi Choisir BAYHEN'S COOK ?</h2>
+      <div class="section-text">
+        <p>
+          Nous mettons notre passion et notre expertise au service de vos événements et de vos papilles. Que ce soit pour un cocktail professionnel, une réunion de famille ou un repas entre amis, nous apportons une touche d'authenticité et de qualité à chaque occasion.
+        </p>
+        <p>
+          Notre cuisine franco-congolaise unique vous fait voyager entre deux continents, avec des recettes traditionnelles revisitées et des saveurs qui éveillent les sens.
+        </p>
+        <p>
+          Plus qu'un traiteur, BAYHEN'S COOK est un partenaire de confiance pour la réussite de vos événements à Nemours, en Seine-et-Marne et en Île-de-France.
+        </p>
+      </div>
+    </section>
+
+    <!-- DEVIS -->
+    <section class="section section-alt" id="quote">
+      <h2>Demander un Devis</h2>
+      <div class="section-text center">
+        <p>
+          Expliquez-nous votre projet (date, lieu, nombre de personnes, type d'événement) et nous vous proposerons une offre personnalisée.
+        </p>
+        <p class="quote-cta">
+          <a href="tel:0663418863" class="cta-button">📞 Nous appeler</a>
+        </p>
+        <p>
+          Vous pouvez également nous écrire à l'adresse suivante :
+          <a href="mailto:kleve@bayhenscook.fr">kleve@bayhenscook.fr</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <h2>Contactez-nous</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="icon">📍</span>
+        <span>Nemours, Seine-et-Marne, Île-de-France</span>
+      </div>
+      <div class="contact-item">
+        <span class="icon">📞</span>
+        <a href="tel:0663418863">06 63 41 88 63</a>
+      </div>
+      <div class="contact-item">
+        <span class="icon">✉️</span>
+        <a href="mailto:kleve@bayhenscook.fr">kleve@bayhenscook.fr</a>
+      </div>
+    </div>
+    <p class="contact-quote">
+      « Chez BAYHEN'S COOK, la satisfaction du client est notre priorité. »
+    </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2024 BAYHEN'S COOK - Tous droits réservés | Traiteur à Nemours</p>
+  </footer>
+
+  <script src="main.js" defer></script>
 </body>
 </html>
